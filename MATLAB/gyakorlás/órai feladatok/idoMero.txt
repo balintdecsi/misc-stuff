@@ -1,0 +1,4 @@
+Minimum:	 0.0111 s
+Maximum:	 0.0136 s
+Mean:	 0.0125 s
+Std:	 6.245575e-04 s

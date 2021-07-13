@@ -1,0 +1,13 @@
+[I, map] = imread('tptp.jpg');
+% I = ind2rgb(I,map);
+Ir_r = I(:,:,1);
+imwrite(Ir_r, 'tptp_pipette1.png');
+level = graythresh(Ir_r);
+BW = imbinarize(Ir_r, level);
+imwrite(BW, 'tptp_pipette2.png');
+BW_maj = bwmorph(BW, 'majority', inf);
+BW_pipette = bwareaopen(BW_maj, 500);
+imshowpair(BW_maj, BW_pipette, 'montage');
+S = regionprops(BW_pipette, 'Area');
+disp(['Hello: ', num2str([S.Area])]);
+imwrite(BW_pipette, 'tptp_pipette3.png');
